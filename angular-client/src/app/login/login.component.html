@@ -1,0 +1,33 @@
+<div class="jumbotron">
+
+<form class="form-signin" [formGroup]="angForm" novalidate (ngSubmit)="onSubmit(email,password)">
+
+  <i class="fas fa-lock"></i>
+
+  <i class="fas fa-check"></i>
+
+  <div class="form-label-group">
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" formControlName="email">
+    <label for="inputEmail">Email address</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" formControlName="password">
+    <label for="inputPassword">Password</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="angForm.pristine || angForm.invalid">Sign in</button>
+  
+</form>
+
+</div>
+
+
+
+<p>Form value: {{ angForm.value | json }}</p>
+<p>Form status: {{ angForm.status | json }}</p>

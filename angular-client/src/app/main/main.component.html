@@ -1,0 +1,91 @@
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+		        <img class="img-fluid rounded-circle" src="http://bagiella.ch/img/mattia.png">
+		      </div>
+			<div class="col-md-6">
+			  <h1 class="display-4 font-italic">{{mattia.name}}</h1>
+			   <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">{{mattia.function}}</a></p>
+			  <p class="lead my-3">{{mattia.summary}}</p>
+
+			  <button type="button" class="btn btn-primary">Switch to english</button>
+
+			  <div ngbDropdown class="d-inline-block">
+			      <button class="btn btn-danger" id="dropdownBasic1" ngbDropdownToggle>Télécharger CV</button>
+			      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+			        <button class="dropdown-item">CV Résumé</button>
+			        <button class="dropdown-item">Dossier de compétence</button>
+			      </div>
+			    </div>
+  		</div>
+	</div>
+</div>
+</div>
+<div class="jumbotron">
+<div class="container">
+	<div class="row">
+	   <div class="col-md-7 align-self-center">
+	      <h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Expérience
+	          </h3>
+	       <div class="card flex-md-row mb-4 box-shadow h-md-250" *ngFor="let exp of mattia?.experiences.data">
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-2 text-primary">{{exp.company}}</strong>
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">{{exp.fonction}}</a>
+              </h3>
+              <div class="mb-1 text-muted"><span [innerHTML]="exp.duration"></span></div>
+              
+            </div>
+            <img class="card-img-right flex-auto d-none d-md-block" style="width:110px; height:110px;" src="../../assets/{{exp.img}}" data-holder-rendered="true">
+          </div>
+
+	   </div>
+	   <div class="col-md-5">
+	      <h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Informatique
+	          </h3>
+
+	          <span class="badge badge-pill badge-secondary" *ngFor="let it of mattia?.informatique.data">{{it}}</span>
+	      <h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Formations
+	          </h3>
+
+	          <div *ngFor="let form of mattia?.formations.data">
+                <h4>{{form.degree}} <small>{{form.major}}</small> ({{form.lieu}})</h4>
+            </div>
+
+	      <h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Langues
+	          </h3>
+
+	          <h4 *ngFor="let lang of mattia?.langues.data"><img width="32px" src="../../assets/{{lang.img}}"> {{lang.name}} <small>{{lang.niveau}}</small></h4>
+
+	      <h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Loisirs
+	          </h3>
+
+	          <span class="badge badge-pill badge-danger" *ngFor="let hob of mattia?.hobbies.data">{{hob}}</span>
+
+	      <h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Références
+	          </h3>
+
+	          <div *ngFor="let ref of mattia?.references.data">
+                <b>{{ref.name}}</b> <small>{{ref.fonction}}</small><br>
+                <small><a ng-href="mailto:cansermoz@pictet.com" class="ng-binding" href="mailto:cansermoz@pictet.com">{{ref.contact}}</a></small>
+            </div>
+	   </div>
+	</div>
+	<div class="container">
+		<h3 class="pb-3 mb-4 font-italic border-bottom">
+	            Documents
+	          </h3>
+
+	    <ul class="list-group list-group-flush">
+		  <li class="list-group-item" *ngFor="let doc of mattia?.documents.data">{{doc.name}}</li>
+		</ul>
+	</div>
+</div>
+</div>
