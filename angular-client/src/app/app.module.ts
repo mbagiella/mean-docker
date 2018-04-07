@@ -8,8 +8,13 @@ import { AppRoutingModule } from './/app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ExpressService } from './express.service';
+import { TodoService } from './todo.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TodoComponent } from './todo/todo.component';
+import { ErrorComponent } from './error/error.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
+
 
 
 @NgModule({
@@ -17,7 +22,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     LoginComponent,
     MainComponent,
-    NavbarComponent
+    NavbarComponent,
+    TodoComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +33,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
+    BrowserAnimationsModule,
     NgbModule.forRoot()
   ],
-  providers: [ExpressService],
+  providers: [ExpressService,TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,109 @@
+        <div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-3">Todo List</h1>
+				<p class="lead">Example de todo list avec Angular 5. {{todo|json}}</p>
+			</div>
+		</div>
+<div class="row" [@todos]="todos.length">
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Todo list</span>
+            <span class="badge badge-secondary badge-pill">{{todos.length}}</span>
+          </h4>
+          <div class="alert alert-info" role="alert" *ngIf="todos.length == 0">
+            <strong>Empty !</strong> Do you have nothing todo ?.
+          </div>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed todos" *ngFor="let t of todos;let i = index" (click)="removeTodo(i)">
+              <div>
+                <h6 class="my-0">{{t.title}}</h6>
+                <small class="text-muted">{{t.description}}</small>
+              </div>
+            </li>
+            
+          </ul>
+
+
+        </div>
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Add a todo</h4>
+          <form>
+
+            
+
+<div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="title">Todo Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="My first todo" required="" [(ngModel)]="todo.title">
+              <div class="invalid-feedback">
+                Please enter a title.
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="level">Priority Level</label>
+                <select class="custom-select d-block w-100" id="level" required="" [(ngModel)]="todo.level" name="level">
+                  <option value="">Choose...</option>
+                  <option value="1">Hight</option>
+                  <option value="2">Medium</option>
+                  <option value="3">Low</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid priority
+                </div>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="description">Todo description</label>
+              <input type="text" class="form-control" id="description"  [(ngModel)]="todo.description" name="description" required="">
+            </div>
+
+              
+
+
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="addTodo()">Add todo</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+            <small class="d-block mb-3 text-muted">© 2017-2018</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Cool stuff</a></li>
+              <li><a class="text-muted" href="#">Random feature</a></li>
+              <li><a class="text-muted" href="#">Team feature</a></li>
+              <li><a class="text-muted" href="#">Stuff for developers</a></li>
+              <li><a class="text-muted" href="#">Another one</a></li>
+              <li><a class="text-muted" href="#">Last time</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Resource</a></li>
+              <li><a class="text-muted" href="#">Resource name</a></li>
+              <li><a class="text-muted" href="#">Another resource</a></li>
+              <li><a class="text-muted" href="#">Final resource</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Team</a></li>
+              <li><a class="text-muted" href="#">Locations</a></li>
+              <li><a class="text-muted" href="#">Privacy</a></li>
+              <li><a class="text-muted" href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>

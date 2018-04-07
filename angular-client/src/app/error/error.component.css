@@ -1,0 +1,21 @@
+
+.blue {
+  font-family: "Segoe UI";
+  color: #fff;
+  background: #008cff;
+  margin: 0;
+}
+
+.emotion {
+  font-size: 8em;
+  margin: 0;
+}
+
+.description {
+  font-size: 1.4em;
+  margin-bottom: 3em;
+}
+
+footer small {
+  font-size: 0.8em;
+}

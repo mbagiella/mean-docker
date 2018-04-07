@@ -1,23 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 
 @Injectable()
 export class ExpressService {
 
-	API = 'http://localhost:3000';
+	private API = 'http://localhost:3000';
 
-  	constructor(private http: HttpClient) { }
+  private errorMsg = new BehaviorSubject<string>('no error');
+
+  err= this.errorMsg.asObservable();
+
+  	constructor(private http: HttpClient) { }  
 
   	login(username: string, password: string) {
-        return this.http.post<any>(`${this.API}/auth`, { username: username, password: password })
-            .subscribe((m) => {
-        		console.log(m);
-      		})
+        
     }
-å
+
     getCV(): Observable<any> {
-   		return this.http.get<any>(`${this.API}/mattia`); 
+   		return this.http.get<any>(`${this.API}/mattia`)
+                      .catch(this.errorHandler); 
+     }
+
+    errorHandler(error: HttpErrorResponse){
+      this.errorMsg.next(error.message || "Server Error");
+      return Observable.throw(error.message || "Server Error")
     }
+
+    getError(): BehaviorSubject<string>{
+      return this.errorMsg;
+    }
+
 
 }

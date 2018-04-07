@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpressService } from '../express.service';
-import { Observable } from "rxjs/Rx"
+import { Observable } from "rxjs/Rx";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,14 +9,16 @@ import { Observable } from "rxjs/Rx"
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  title = 'app works!';
 
-  mattia={name:'test',function:'test',summary:'test',experiences:{data:['lol']}};
-
-  constructor(private expressService: ExpressService) {}
+  mattia;
+  
+  constructor(private expressService: ExpressService,private router: Router) {}
 
   ngOnInit() {
-    this.expressService.getCV().subscribe(mattia => this.mattia = mattia[0]);
+    this.expressService.getCV().subscribe(
+      mattia => this.mattia = mattia[0],
+    	error => console.log('error')
+    );
   }
 
 
